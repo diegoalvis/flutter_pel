@@ -4,32 +4,61 @@ import 'package:pelican/data/models/order_config.dart';
 
 @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
 class BasicOrder extends Equatable {
-  String id = "";
-  String externalId = "";
-  int productCount;
-  String firstName = "";
-  String lastName = "";
-  String customerNationalId = "";
-  String phone;
-  String pickupTime = "";
-  bool cashOrder = false;
+  final String id;
+  final String externalId;
+  final int productCount;
+  final int processedItemsCount;
+  final double tax;
+  final double feesTotal;
+  final double couponAmount;
+  final double confirmedTotal;
+  final String firstName;
+  final String customerNationalId;
+  final String lastName;
+  final String phone;
+  final String pickupTime;
+  final bool cashOrder;
+
 //@SerializedName("total")
-  double originalTotal = 0.0;
-  int processedAmount = 0;
+  final double originalTotal;
+
 //int status = OrderStatus.UNASSIGNED.id;
-  double couponAmount;
-  double confirmedTotal = 0.0;
-  String comment;
-  String vendorId;
-  String vendorName;
-  double feesTotal = 0.0;
-  double tax;
-  List<String> prescriptionPhotoUrls;
-  String riderName;
-  String shopperId = "";
+  final String comment;
+  final String vendorId;
+  final String vendorName;
+  final String riderName;
+  final String shopperId;
+  final List<String> prescriptionPhotoUrls;
+
 //String currency= Currency.getInstance(Locale.getDefault()).currencyCode
-  double collectAtPickup = 0.0;
-  OrderConfig config;
+  final double collectAtPickup;
+  final OrderConfig config;
+
+  BasicOrder(
+    this.id,
+    this.externalId,
+    this.productCount,
+    this.firstName,
+    this.customerNationalId,
+    this.lastName,
+    this.phone,
+    this.pickupTime,
+    this.cashOrder,
+    this.originalTotal,
+    this.processedItemsCount,
+    this.couponAmount,
+    this.confirmedTotal,
+    this.comment,
+    this.vendorId,
+    this.vendorName,
+    this.feesTotal,
+    this.tax,
+    this.prescriptionPhotoUrls,
+    this.riderName,
+    this.shopperId,
+    this.collectAtPickup,
+    this.config,
+  );
 
 //fun getOrderStatus(): OrderStatus = OrderStatus.getStatusById(status)
 //
