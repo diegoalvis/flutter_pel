@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pelican/data/api/api_url.dart';
+import 'package:pelican/data/remote/api/api_url.dart';
 
 class ShopperApi {
 
@@ -14,8 +14,7 @@ class ShopperApi {
   Future<Response> login(String username, String password) =>
       _dio.post("$v1/vendors", queryParameters: {"username": username, "password": password});
 
-  /// Get authentication token
+  /// Get authentication token.
   Future<Response> getAuthToken(String token) => _dio.get("$v1/tokens/refresh", queryParameters: {"token": token});
-
 
 }
