@@ -8,13 +8,13 @@ part of 'vendor_config.dart';
 
 VendorConfig _$VendorConfigFromJson(Map<String, dynamic> json) {
   return VendorConfig(
-    json['chat_enabled'] as bool,
-    json['max_orders_in_progress'] as int,
+    json['chatEnabled'] as bool,
+    json['maxOrdersInProgress'] as int,
   );
 }
 
 Map<String, dynamic> _$VendorConfigToJson(VendorConfig instance) =>
     <String, dynamic>{
-      'chat_enabled': instance.chatEnabled,
-      'max_orders_in_progress': instance.maxOrdersInProgress,
+      'chatEnabled': instance.chatEnabled,
+      'maxOrdersInProgress': instance.maxOrdersInProgress,
     };

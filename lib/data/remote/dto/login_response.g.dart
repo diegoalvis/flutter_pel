@@ -8,8 +8,8 @@ part of 'login_response.dart';
 
 LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) {
   return LoginResponse(
-    json['access_token'] as String,
-    json['password_change_required'] as bool,
+    json['accessToken'] as String,
+    json['passwordChangeRequired'] as bool,
     json['profile'] == null
         ? null
         : Profile.fromJson(json['profile'] as Map<String, dynamic>),
@@ -22,8 +22,8 @@ LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
     <String, dynamic>{
-      'access_token': instance.accessToken,
-      'password_change_required': instance.passwordChangeRequired,
+      'accessToken': instance.accessToken,
+      'passwordChangeRequired': instance.passwordChangeRequired,
       'profile': instance.profile?.toJson(),
       'vendors': instance.vendors?.map((e) => e?.toJson())?.toList(),
     };

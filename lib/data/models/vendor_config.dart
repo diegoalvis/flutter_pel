@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'vendor_config.g.dart';
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+@JsonSerializable(explicitToJson: true)
 class VendorConfig {
   final bool chatEnabled;
   final int maxOrdersInProgress;// 0 -> limitless number of order in progress

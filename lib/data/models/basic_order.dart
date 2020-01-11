@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:pelican/data/models/order_config.dart';
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+@JsonSerializable(explicitToJson: true)
 class BasicOrder extends Equatable {
   final String id;
   final String externalId;

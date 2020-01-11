@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'picker_config.g.dart';
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+@JsonSerializable(explicitToJson: true)
 class PickerConfig {
   final bool supportChatEnabled;
 

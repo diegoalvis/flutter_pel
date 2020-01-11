@@ -8,11 +8,11 @@ part of 'picker_config.dart';
 
 PickerConfig _$PickerConfigFromJson(Map<String, dynamic> json) {
   return PickerConfig(
-    json['support_chat_enabled'] as bool,
+    json['supportChatEnabled'] as bool,
   );
 }
 
 Map<String, dynamic> _$PickerConfigToJson(PickerConfig instance) =>
     <String, dynamic>{
-      'support_chat_enabled': instance.supportChatEnabled,
+      'supportChatEnabled': instance.supportChatEnabled,
     };

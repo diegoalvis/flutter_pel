@@ -6,7 +6,7 @@ import 'package:pelican/data/models/picker_config.dart';
 
 part 'profile.g.dart';
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+@JsonSerializable(explicitToJson: true)
 class Profile extends Equatable {
   final String shopperId;
   final String firstName;

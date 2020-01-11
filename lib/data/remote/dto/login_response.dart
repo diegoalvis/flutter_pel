@@ -4,7 +4,7 @@ import 'package:pelican/data/models/vendor.dart';
 
 part 'login_response.g.dart';
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+@JsonSerializable(explicitToJson: true)
 class LoginResponse {
 
   final String accessToken;

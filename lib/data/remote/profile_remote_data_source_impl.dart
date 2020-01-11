@@ -19,7 +19,7 @@ class ProfileRemoteDataSourceImpl extends RemoteDataSource implements ProfileRem
   Future<LoginResponse> login(String username, String password) async {
     return _api
         .login(username, password)
-        .then((response) => processResponse(response, parseLogin as dynamic))
+        .then((response) => processResponse(response, parseLogin))
         .then((response) => response.data as LoginResponse);
   }
 }

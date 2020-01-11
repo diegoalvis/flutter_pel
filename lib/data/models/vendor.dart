@@ -5,7 +5,7 @@ import 'vendor_config.dart';
 
 part 'vendor.g.dart';
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+@JsonSerializable(explicitToJson: true)
 class Vendor extends Equatable {
   final String id;
   final String name;

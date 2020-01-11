@@ -10,8 +10,8 @@ Vendor _$VendorFromJson(Map<String, dynamic> json) {
   return Vendor(
     json['id'] as String,
     json['name'] as String,
-    json['image_url'] as String,
-    json['country_code'] as String,
+    json['imageUrl'] as String,
+    json['countryCode'] as String,
     json['address'] as String,
     (json['children'] as List)?.map((e) => e as String)?.toList(),
     (json['latitude'] as num)?.toDouble(),
@@ -25,8 +25,8 @@ Vendor _$VendorFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$VendorToJson(Vendor instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'image_url': instance.imageUrl,
-      'country_code': instance.countryCode,
+      'imageUrl': instance.imageUrl,
+      'countryCode': instance.countryCode,
       'address': instance.address,
       'children': instance.children,
       'latitude': instance.latitude,

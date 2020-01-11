@@ -10,23 +10,18 @@ abstract class RemoteDataSource {
 //    return Options(headers: {HttpHeaders.authorizationHeader: token});
 //  }
 
-  Future<BaseResponse<T>> processResponse<T>(Response response, ComputeCallback<dynamic, T> callback,
-      {String dataKey = "data"}) async {
+  Future<BaseResponse<T>> processResponse<T>(Response response, ComputeCallback<Map<String, dynamic>, T> callback) async {
     if ((response.statusCode >= 200 && response.statusCode < 300) || response.statusCode == 304) {
       final body = response.data;
-      final bodyData = body[dataKey];
+      final bodyData = body; //body["data"];
       bool success = body["success"] as bool;
       String error = body["error"] as String;
 
       T data;
-      if (bodyData != null) {
-        if (callback == null) {
-          data = bodyData as T;
-        } else if (T is Iterable) {
-          data = await compute<List<Map<String, dynamic>>, T>(callback, (bodyData as List).cast<Map<String, dynamic>>());
-        } else {
-          data = await compute<Map<String, dynamic>, T>(callback, body["data"]);
-        }
+      if (callback == null) {
+        data = bodyData as T;
+      } else {
+        data = await compute<Map<String, dynamic>, T>(callback, bodyData);
       }
       return BaseResponse(success: success, data: data, error: error);
     } else if (response.statusCode == 404) {
