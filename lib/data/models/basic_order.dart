@@ -1,5 +1,3 @@
-import 'dart:core';
-
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:pelican/data/models/order_config.dart';
