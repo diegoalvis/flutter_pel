@@ -1,11 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:pelican/data/models/profile.dart';
 import 'package:pelican/data/models/vendor.dart';
+import 'package:pelican/data/remote/api/base_response.dart';
 
 part 'login_response.g.dart';
 
-@JsonSerializable(explicitToJson: true)
-class LoginResponse {
+@JsonSerializable()
+class LoginResponse extends BaseResponse {
 
   final String accessToken;
   final bool passwordChangeRequired;
@@ -13,7 +14,6 @@ class LoginResponse {
   final List<Vendor> vendors;
 
   LoginResponse(this.accessToken, this.passwordChangeRequired, this.profile, this.vendors);
-
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) => _$LoginResponseFromJson(json);
 

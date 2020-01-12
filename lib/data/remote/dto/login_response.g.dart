@@ -17,13 +17,20 @@ LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Vendor.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-  );
+  )
+    ..success = json['success'] as bool
+    ..error = json['error'] as String
+    ..data = json['data'];
 }
 
 Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
     <String, dynamic>{
+      'success': instance.success,
+      'error': instance.error,
+      'data': instance.data,
       'accessToken': instance.accessToken,
       'passwordChangeRequired': instance.passwordChangeRequired,
-      'profile': instance.profile?.toJson(),
-      'vendors': instance.vendors?.map((e) => e?.toJson())?.toList(),
+      'profile': instance.profile,
+      'vendors': instance.vendors,
     };
+
