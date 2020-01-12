@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:pelican/data/remote/api/api_url.dart';
+import 'package:pelican/data/remote/dto/base_response.dart';
 import 'package:pelican/data/remote/api/shopper_api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -44,4 +45,11 @@ class AuthInterceptors extends InterceptorsWrapper {
     final options = Options(headers: {HttpHeaders.authorizationHeader: token});
     return super.onRequest(options);
   }
+}
+
+
+class AuthResponse extends BaseResponse {
+  final String accessToken;
+
+  AuthResponse(this.accessToken);
 }

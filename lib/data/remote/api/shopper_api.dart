@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pelican/data/remote/api/api_url.dart';
-import 'package:pelican/data/remote/dto/auth_response.dart';
+import 'package:pelican/data/remote/api/interceptor/auth_interceptor.dart';
 
 class ShopperApi {
   final Dio _dio;

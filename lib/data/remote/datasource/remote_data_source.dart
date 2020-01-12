@@ -1,14 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-
-import 'api/base_response.dart';
-import 'error/service_exception.dart';
+import 'package:pelican/data/remote/dto/base_response.dart';
+import 'package:pelican/data/remote/error/service_exception.dart';
 
 abstract class RemoteDataSource {
-//  Future<Options> _mkAuth(SessionManager session) async {
-//    final token = await session.authToken;
-//    return Options(headers: {HttpHeaders.authorizationHeader: token});
-//  }
 
   Future<BaseResponse<T>> processResponse<T>(Response response, ComputeCallback<Map<String, dynamic>, T> callback) async {
     if ((response.statusCode >= 200 && response.statusCode < 300) || response.statusCode == 304) {

@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:pelican/data/remote/api/api_url.dart';
 import 'package:pelican/data/remote/api/shopper_api.dart';
-import 'package:pelican/data/remote/profile_remote_data_source_impl.dart';
+import 'package:pelican/data/remote/datasource/profile_remote_data_source_impl.dart';
 import 'package:pelican/presentation/test_page.dart';
 
 class SplashPage extends StatefulWidget {
