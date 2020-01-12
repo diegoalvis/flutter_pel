@@ -5,13 +5,12 @@ import 'package:pelican/data/remote/dto/login_response.dart';
 import 'profile_remote_data_source.dart';
 
 class ProfileRemoteDataSourceImpl extends RemoteDataSource implements ProfileRemoteDataSource {
-  final ShopperApi _api;
 
-  ProfileRemoteDataSourceImpl(this._api);
+  ProfileRemoteDataSourceImpl(ShopperApi api) : super(api);
 
   @override
   Future<LoginResponse> login(String username, String password) async {
-    return _api
+    return api
         .login(username, password)
         .then((response) => processResponse(response, parseLogin))
         .then((response) => response.data);

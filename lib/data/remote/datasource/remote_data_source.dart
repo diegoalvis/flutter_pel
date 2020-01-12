@@ -1,9 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:pelican/data/remote/api/shopper_api.dart';
 import 'package:pelican/data/remote/dto/base_response.dart';
 import 'package:pelican/data/remote/error/service_exception.dart';
 
 abstract class RemoteDataSource {
+
+  final ShopperApi api;
+
+  RemoteDataSource(this.api);
 
   Future<BaseResponse<T>> processResponse<T>(Response response, ComputeCallback<Map<String, dynamic>, T> callback) async {
     if ((response.statusCode >= 200 && response.statusCode < 300) || response.statusCode == 304) {

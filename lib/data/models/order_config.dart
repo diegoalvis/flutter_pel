@@ -1,11 +1,19 @@
 import 'package:json_annotation/json_annotation.dart';
 
+part 'order_config.g.dart';
+
 @JsonSerializable(explicitToJson: true)
 class OrderConfig {
-  bool checkoutVatRequired = false;
-  bool checkoutInvoiceNumberRequired = false;
-  bool checkoutSkipValidationAllowed = false;
-  bool customerChatEnabled = false;
-  bool supportChatEnabled = false;
-  bool checkoutInvoicePictureRequired = true;
+  final bool checkoutVatRequired;
+  final bool checkoutInvoiceNumberRequired;
+  final bool checkoutSkipValidationAllowed;
+  final bool customerChatEnabled;
+  final bool supportChatEnabled;
+  final bool checkoutInvoicePictureRequired;
+
+  OrderConfig(this.checkoutVatRequired, this.checkoutInvoiceNumberRequired, this.checkoutSkipValidationAllowed, this.customerChatEnabled, this.supportChatEnabled, this.checkoutInvoicePictureRequired);
+
+  factory OrderConfig.fromJson(Map<String, dynamic> json) => _$OrderConfigFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OrderConfigToJson(this);
 }

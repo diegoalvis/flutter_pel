@@ -33,4 +33,3 @@ Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
       'profile': instance.profile,
       'vendors': instance.vendors,
     };
-

@@ -2,6 +2,8 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:pelican/data/models/order_config.dart';
 
+part 'basic_order.g.dart';
+
 @JsonSerializable(explicitToJson: true)
 class BasicOrder extends Equatable {
   final String id;
@@ -18,19 +20,16 @@ class BasicOrder extends Equatable {
   final String phone;
   final String pickupTime;
   final bool cashOrder;
-
-//@SerializedName("total")
+  @JsonKey(name: "total")
   final double originalTotal;
-
-//int status = OrderStatus.UNASSIGNED.id;
+  final int status;
   final String comment;
   final String vendorId;
   final String vendorName;
   final String riderName;
   final String shopperId;
   final List<String> prescriptionPhotoUrls;
-
-//String currency= Currency.getInstance(Locale.getDefault()).currencyCode
+  final String currency;
   final double collectAtPickup;
   final OrderConfig config;
 
@@ -57,8 +56,12 @@ class BasicOrder extends Equatable {
     this.riderName,
     this.shopperId,
     this.collectAtPickup,
-    this.config,
+    this.config, this.status, this.currency,
   );
+
+  factory BasicOrder.fromJson(Map<String, dynamic> json) => _$BasicOrderFromJson(json);
+
+  Map<String, dynamic> toJson() => _$BasicOrderToJson(this);
 
 //fun getOrderStatus(): OrderStatus = OrderStatus.getStatusById(status)
 //
@@ -71,4 +74,3 @@ class BasicOrder extends Equatable {
 //override fun compareTo(other: BasicOrder) = pickupTime.compareTo(other.pickupTime)
 
 }
-
