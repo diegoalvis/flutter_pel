@@ -20,4 +20,9 @@ class ShopperApi {
     final response = await _dio.get("$v1/tokens/refresh", queryParameters: {"token": oldToken});
     return AuthResponse(response.data["accessToken"]);
   }
+
+  /// Get incoming order for a vendor or group vendor.
+  Future<Response> getIncomingOrders(String vendorIds, String status) {
+    return _dio.post("$v1/orders", queryParameters: {"vendors": vendorIds, "status": status});
+  }
 }

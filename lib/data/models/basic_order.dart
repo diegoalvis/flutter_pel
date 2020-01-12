@@ -71,3 +71,4 @@ class BasicOrder extends Equatable {
 //override fun compareTo(other: BasicOrder) = pickupTime.compareTo(other.pickupTime)
 
 }
+

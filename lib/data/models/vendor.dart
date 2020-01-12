@@ -17,11 +17,10 @@ class Vendor extends Equatable {
   final double longitude;
   final VendorConfig config;
 
-  Vendor(this.id, this.name, this.imageUrl, this.countryCode, this.address, this.children, this.latitude, this.longitude, this.config);
-
+  Vendor(this.id, this.name, this.imageUrl, this.countryCode, this.address, this.children, this.latitude, this.longitude,
+      this.config);
 
   factory Vendor.fromJson(Map<String, dynamic> json) => _$VendorFromJson(json);
 
   Map<String, dynamic> toJson() => _$VendorToJson(this);
-
 }
