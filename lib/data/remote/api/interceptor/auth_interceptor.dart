@@ -7,16 +7,26 @@ import 'package:pelican/data/remote/dto/base_response.dart';
 import 'package:pelican/data/remote/api/shopper_api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class AuthInterceptors extends InterceptorsWrapper {
+class AuthInterceptor extends InterceptorsWrapper {
   final Dio _dio;
-  final ShopperApi _api;
 
-  AuthInterceptors(this._dio, this._api);
+  AuthInterceptor(this._dio);
+
+  @override
+  Future onResponse(Response response) async {
+    return response;
+  }
 
   @override
   Future onError(DioError err) async {
     if (err.response?.statusCode == 403) {
+      _dio.interceptors.requestLock.lock();
+
       RequestOptions options = err.response.request;
+
+      final tokenDio = Dio();
+      tokenDio.options = _dio.options;
+      final ShopperApi _api = ShopperApi(tokenDio);
 
       final oldToken = options.headers[HttpHeaders.authorizationHeader].toString();
       final response = await _api.getAuthToken(oldToken).catchError((error) {
@@ -26,15 +36,17 @@ class AuthInterceptors extends InterceptorsWrapper {
           return;
         }
       });
-      final newToken = response.accessToken;
+      final newToken = response?.accessToken;
       // TODO inject preferences
       final SharedPreferences preferences = await SharedPreferences.getInstance();
       preferences.setString("token", newToken);
 
       options.headers[HttpHeaders.authorizationHeader] = newToken;
+
+      _dio.interceptors.requestLock.unlock();
       return _dio.request(options.path, options: options);
     } else {
-      return super.onError(err);
+      return err;
     }
   }
 
@@ -42,11 +54,10 @@ class AuthInterceptors extends InterceptorsWrapper {
   Future onRequest(RequestOptions options) async {
     final SharedPreferences preferences = await SharedPreferences.getInstance();
     final token = preferences.getString("token") ?? appTokenDevelopment;
-    final options = Options(headers: {HttpHeaders.authorizationHeader: token});
-    return super.onRequest(options);
+    options.headers[HttpHeaders.authorizationHeader] = token;
+    return options;
   }
 }
-
 
 class AuthResponse extends BaseResponse {
   final String accessToken;

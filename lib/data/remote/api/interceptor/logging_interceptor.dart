@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 
-class LoggingInterceptors extends InterceptorsWrapper {
+class LoggingInterceptor extends InterceptorsWrapper {
   @override
   Future onError(DioError err) {
     print(

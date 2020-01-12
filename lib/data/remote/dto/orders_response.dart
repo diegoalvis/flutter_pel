@@ -10,9 +10,9 @@ part 'orders_response.g.dart';
 @JsonSerializable()
 class OrdersResponse extends BaseResponse {
 
-  final List<BasicOrder> order;
+  final List<BasicOrder> orders;
 
-  OrdersResponse(this.order);
+  OrdersResponse(this.orders);
 
   factory OrdersResponse.fromJson(Map<String, dynamic> json) => _$OrdersResponseFromJson(json);
 

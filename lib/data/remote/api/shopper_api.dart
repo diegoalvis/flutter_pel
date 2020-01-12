@@ -12,7 +12,10 @@ class ShopperApi {
 
   /// User login.
   Future<Response> login(String username, String password) {
-    return _dio.post("$v1/login", queryParameters: {"username": username, "password": password});
+    return _dio.post("$v1/login", queryParameters: {"username": username, "password": password})
+    .catchError((error) {
+      print(error.toString());
+    });
   }
 
   /// Get authentication token.

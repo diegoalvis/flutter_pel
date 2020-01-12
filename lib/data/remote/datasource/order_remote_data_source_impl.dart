@@ -8,7 +8,7 @@ class OrderRemoteDataSourceImpl extends RemoteDataSource implements OrderRemoteD
   OrderRemoteDataSourceImpl(ShopperApi api) : super(api);
 
   @override
-  Future getOrderByStatus(String vendorIds, String status) {
+  Future<OrdersResponse> getOrderByStatus(String vendorIds, String status) {
     return api
         .getOrdersByStatus(vendorIds, status)
         .then((response) => processResponse(response, parseOrders))
