@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:pelican/data/remote/api/api_url.dart';
+import 'package:pelican/data/remote/dto/auth_response.dart';
 
 class ShopperApi {
   final Dio _dio;
@@ -13,10 +12,12 @@ class ShopperApi {
 
   /// User login.
   Future<Response> login(String username, String password) {
-    final options = Options(headers: {HttpHeaders.authorizationHeader: appTokenDevelopment});
-    return _dio.post("$v1/login", queryParameters: {"username": username, "password": password}, options: options);
+    return _dio.post("$v1/login", queryParameters: {"username": username, "password": password});
   }
 
   /// Get authentication token.
-  Future<Response> getAuthToken(String token) => _dio.get("$v1/tokens/refresh", queryParameters: {"token": token});
+  Future<AuthResponse> getAuthToken(String oldToken) async {
+    final response = await _dio.get("$v1/tokens/refresh", queryParameters: {"token": oldToken});
+    return AuthResponse(response.data["accessToken"]);
+  }
 }

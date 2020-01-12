@@ -2,13 +2,14 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 
-class LoggingInterceptors implements Interceptor {
+class LoggingInterceptors extends InterceptorsWrapper {
   @override
-  Future onError(DioError err) async {
+  Future onError(DioError err) {
     print(
         "<-- ${err.message} ${(err.response?.request != null ? (err.response.request.baseUrl + err.response.request.path) : 'URL')}");
     print("${err.response != null ? err.response.data : 'Unknown Error'}");
     print("<-- End error");
+    return super.onError(err);
   }
 
   @override
@@ -26,7 +27,7 @@ class LoggingInterceptors implements Interceptor {
     }
     print("--> END ${options.method != null ? options.method.toUpperCase() : 'METHOD'}");
 
-    return options;
+    return super.onRequest(options);
   }
 
   @override
@@ -37,5 +38,6 @@ class LoggingInterceptors implements Interceptor {
     response.headers?.forEach((k, v) => print('$k: $v'));
     print("Response: ${response.data}");
     print("<-- END HTTP");
+    return super.onResponse(response);
   }
 }
