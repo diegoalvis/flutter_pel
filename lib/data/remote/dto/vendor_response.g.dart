@@ -10,7 +10,7 @@ VendorResponse _$VendorResponseFromJson(Map<String, dynamic> json) {
   return VendorResponse(
     (json['vendors'] as List)
         ?.map((e) =>
-            e == null ? null : Vendor.fromJson(e as Map<String, dynamic>))
+            e == null ? null : VendorModel.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   )
     ..success = json['success'] as bool

@@ -9,8 +9,9 @@ part of 'orders_response.dart';
 OrdersResponse _$OrdersResponseFromJson(Map<String, dynamic> json) {
   return OrdersResponse(
     (json['orders'] as List)
-        ?.map((e) =>
-            e == null ? null : BasicOrder.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : BasicOrderModel.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   )
     ..success = json['success'] as bool

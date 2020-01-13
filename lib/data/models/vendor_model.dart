@@ -3,10 +3,10 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'vendor_config.dart';
 
-part 'vendor.g.dart';
+part 'vendor_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Vendor extends Equatable {
+class VendorModel extends Equatable {
   final String id;
   final String name;
   final String imageUrl;
@@ -17,10 +17,10 @@ class Vendor extends Equatable {
   final double longitude;
   final VendorConfig config;
 
-  Vendor(this.id, this.name, this.imageUrl, this.countryCode, this.address, this.children, this.latitude, this.longitude,
+  VendorModel(this.id, this.name, this.imageUrl, this.countryCode, this.address, this.children, this.latitude, this.longitude,
       this.config);
 
-  factory Vendor.fromJson(Map<String, dynamic> json) => _$VendorFromJson(json);
+  factory VendorModel.fromJson(Map<String, dynamic> json) => _$VendorModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$VendorToJson(this);
+  Map<String, dynamic> toJson() => _$VendorModelToJson(this);
 }

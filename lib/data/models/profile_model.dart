@@ -4,10 +4,10 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:pelican/data/models/picker_config.dart';
 
-part 'profile.g.dart';
+part 'profile_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Profile extends Equatable {
+class ProfileModel extends Equatable {
   final String shopperId;
   final String firstName;
   final String lastName;
@@ -18,9 +18,9 @@ class Profile extends Equatable {
   final bool managedWithRooster;
   final PickerConfig config;
 
-  Profile(this.shopperId, this.firstName, this.lastName, this.email, this.contractType, this.roosterURL, this.profileImageUrl, this.managedWithRooster, this.config);
+  ProfileModel(this.shopperId, this.firstName, this.lastName, this.email, this.contractType, this.roosterURL, this.profileImageUrl, this.managedWithRooster, this.config);
 
-  factory Profile.fromJson(Map<String, dynamic> json) => _$ProfileFromJson(json);
+  factory ProfileModel.fromJson(Map<String, dynamic> json) => _$ProfileModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ProfileToJson(this);
+  Map<String, dynamic> toJson() => _$ProfileModelToJson(this);
 }

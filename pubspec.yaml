@@ -21,6 +21,7 @@ dependencies:
   json_annotation: ^3.0.0
   font_awesome_flutter: ^8.5.0
   cupertino_icons: ^0.1.2
+  uuid: 2.0.4
 
 dev_dependencies:
   flutter_test:

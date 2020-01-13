@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'profile.dart';
+part of 'profile_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Profile _$ProfileFromJson(Map<String, dynamic> json) {
-  return Profile(
+ProfileModel _$ProfileModelFromJson(Map<String, dynamic> json) {
+  return ProfileModel(
     json['shopperId'] as String,
     json['firstName'] as String,
     json['lastName'] as String,
@@ -22,7 +22,8 @@ Profile _$ProfileFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ProfileToJson(Profile instance) => <String, dynamic>{
+Map<String, dynamic> _$ProfileModelToJson(ProfileModel instance) =>
+    <String, dynamic>{
       'shopperId': instance.shopperId,
       'firstName': instance.firstName,
       'lastName': instance.lastName,

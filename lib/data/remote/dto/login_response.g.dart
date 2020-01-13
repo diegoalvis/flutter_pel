@@ -12,10 +12,10 @@ LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) {
     json['passwordChangeRequired'] as bool,
     json['profile'] == null
         ? null
-        : Profile.fromJson(json['profile'] as Map<String, dynamic>),
+        : ProfileModel.fromJson(json['profile'] as Map<String, dynamic>),
     (json['vendors'] as List)
         ?.map((e) =>
-            e == null ? null : Vendor.fromJson(e as Map<String, dynamic>))
+            e == null ? null : VendorModel.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   )
     ..success = json['success'] as bool

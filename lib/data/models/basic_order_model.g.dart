@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'basic_order.dart';
+part of 'basic_order_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-BasicOrder _$BasicOrderFromJson(Map<String, dynamic> json) {
-  return BasicOrder(
+BasicOrderModel _$BasicOrderModelFromJson(Map<String, dynamic> json) {
+  return BasicOrderModel(
     json['id'] as String,
     json['externalId'] as String,
     json['productCount'] as int,
@@ -22,13 +22,13 @@ BasicOrder _$BasicOrderFromJson(Map<String, dynamic> json) {
     (json['couponAmount'] as num)?.toDouble(),
     (json['confirmedTotal'] as num)?.toDouble(),
     json['comment'] as String,
-    json['vendorId'] as String,
+    json['vendorId'] as int,
     json['vendorName'] as String,
     (json['feesTotal'] as num)?.toDouble(),
     (json['tax'] as num)?.toDouble(),
     (json['prescriptionPhotoUrls'] as List)?.map((e) => e as String)?.toList(),
     json['riderName'] as String,
-    json['shopperId'] as String,
+    json['shopperId'] as int,
     (json['collectAtPickup'] as num)?.toDouble(),
     json['config'] == null
         ? null
@@ -38,7 +38,7 @@ BasicOrder _$BasicOrderFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$BasicOrderToJson(BasicOrder instance) =>
+Map<String, dynamic> _$BasicOrderModelToJson(BasicOrderModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'externalId': instance.externalId,
@@ -54,7 +54,7 @@ Map<String, dynamic> _$BasicOrderToJson(BasicOrder instance) =>
       'phone': instance.phone,
       'pickupTime': instance.pickupTime,
       'cashOrder': instance.cashOrder,
-      'total': instance.originalTotal,
+      'total': instance.total,
       'status': instance.status,
       'comment': instance.comment,
       'vendorId': instance.vendorId,

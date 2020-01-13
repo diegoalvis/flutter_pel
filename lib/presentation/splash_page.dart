@@ -14,7 +14,10 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  _makeLogin() {
+
+
+  _makeLogin() async {
+
     final dio = Dio(BaseOptions(
       baseUrl: baseUrlDevelopment,
       connectTimeout: 5000,
@@ -22,16 +25,22 @@ class _SplashPageState extends State<SplashPage> {
     ));
     final api = ShopperApi(dio..interceptors.addAll([AuthInterceptor(dio), LoggingInterceptor()]));
 
+    final SharedPreferences preferences = await SharedPreferences.getInstance();
+    final token = preferences.getString("token");
+
+    if(token != null) {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TestPage("", api)));
+      return;
+    }
+
     final dataSource = ProfileRemoteDataSourceImpl(api);
 
     dataSource.login("diego.alvis@pedidosya.com", "123456").then((response) async {
       final email = response.profile.email;
-      final vendorIds = response.vendors.map((vendor) => vendor.id).join(",");
 
-      final SharedPreferences preferences = await SharedPreferences.getInstance();
       preferences.setString("token", response.accessToken);
 
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TestPage(email, api, vendorIds)));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TestPage(email, api)));
     }).catchError((error) {
       print(error.toString());
     });

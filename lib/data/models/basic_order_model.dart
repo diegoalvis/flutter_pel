@@ -2,10 +2,10 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:pelican/data/models/order_config.dart';
 
-part 'basic_order.g.dart';
+part 'basic_order_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class BasicOrder extends Equatable {
+class BasicOrderModel extends Equatable {
   final String id;
   final String externalId;
   final int productCount;
@@ -20,20 +20,19 @@ class BasicOrder extends Equatable {
   final String phone;
   final String pickupTime;
   final bool cashOrder;
-  @JsonKey(name: "total")
-  final double originalTotal;
+  final double total;
   final int status;
   final String comment;
-  final String vendorId;
+  final int vendorId;
   final String vendorName;
   final String riderName;
-  final String shopperId;
+  final int shopperId;
   final List<String> prescriptionPhotoUrls;
   final String currency;
   final double collectAtPickup;
   final OrderConfig config;
 
-  BasicOrder(
+  BasicOrderModel(
     this.id,
     this.externalId,
     this.productCount,
@@ -43,7 +42,7 @@ class BasicOrder extends Equatable {
     this.phone,
     this.pickupTime,
     this.cashOrder,
-    this.originalTotal,
+    this.total,
     this.processedItemsCount,
     this.couponAmount,
     this.confirmedTotal,
@@ -59,9 +58,9 @@ class BasicOrder extends Equatable {
     this.config, this.status, this.currency,
   );
 
-  factory BasicOrder.fromJson(Map<String, dynamic> json) => _$BasicOrderFromJson(json);
+  factory BasicOrderModel.fromJson(Map<String, dynamic> json) => _$BasicOrderModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$BasicOrderToJson(this);
+  Map<String, dynamic> toJson() => _$BasicOrderModelToJson(this);
 
 //fun getOrderStatus(): OrderStatus = OrderStatus.getStatusById(status)
 //

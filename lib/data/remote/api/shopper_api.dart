@@ -26,6 +26,6 @@ class ShopperApi {
 
   /// Get orders by status for a vendor or group vendor.
   Future<Response> getOrdersByStatus(String vendorIds, String status, {int size = 40, int page = 0}) {
-    return _dio.post("$v1/orders", queryParameters: {"vendors": vendorIds, "status": status, "size": size, "page": page});
+    return _dio.get("$v1/orders", queryParameters: {"vendors": vendorIds, "status": status, "size": size, "page": page});
   }
 }

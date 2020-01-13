@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'vendor.dart';
+part of 'vendor_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Vendor _$VendorFromJson(Map<String, dynamic> json) {
-  return Vendor(
+VendorModel _$VendorModelFromJson(Map<String, dynamic> json) {
+  return VendorModel(
     json['id'] as String,
     json['name'] as String,
     json['imageUrl'] as String,
@@ -22,7 +22,8 @@ Vendor _$VendorFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$VendorToJson(Vendor instance) => <String, dynamic>{
+Map<String, dynamic> _$VendorModelToJson(VendorModel instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'imageUrl': instance.imageUrl,
